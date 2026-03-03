@@ -3,37 +3,351 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chez Piñeiro</title>
+  <title>Chez Piñeiro | Pocitos</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="Un clásico de Pocitos. Pizzería y Chivitería. 21 de Setiembre y Ellauri. Pedidos por WhatsApp, ubicación y menú." />
+
+  <!-- Open Graph (preview al compartir) -->
+  <meta property="og:title" content="Chez Piñeiro | Pocitos" />
+  <meta property="og:description" content="Chivitos • Pizzas • Platos clásicos. Pedí por WhatsApp o mirá el menú." />
+  <!-- Sube una imagen 1080x1080 al repo y pon aquí su URL. Ej: https://TUUSUARIO.github.io/REPO/preview.jpg -->
+  <meta property="og:image" content="" />
+  <meta property="og:type" content="website" />
+
   <style>
-    body{margin:0;font-family:system-ui;background:#0b0b0c;color:#f2f2f2;display:grid;place-items:center;min-height:100vh}
-    .card{width:min(520px,92vw);background:#141416;border:1px solid #26262a;border-radius:18px;padding:22px}
-    h1{margin:0 0 6px;font-weight:700}
-    p{margin:0 0 16px;color:#cfcfd6;line-height:1.35}
-    .btn{display:block;text-decoration:none;text-align:center;padding:14px 16px;border-radius:14px;margin:10px 0;font-weight:600}
-    .primary{background:#c4121a;color:white}
-    .secondary{background:#1d1d21;color:#f2f2f2;border:1px solid #2b2b31}
-    .small{font-size:14px;color:#a9a9b2;margin-top:14px}
+    :root{
+      --bg:#0b0b0d;
+      --card:#121216;
+      --border:#262630;
+      --text:#f3f3f5;
+      --muted:#b9b9c4;
+      --muted2:#8f8fa0;
+      --accent:#c4121a;   /* rojo elegante */
+      --accent2:#e9d8c7;  /* beige cálido */
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background: radial-gradient(1100px 700px at 50% -10%, rgba(255,255,255,.08), transparent 55%),
+                  radial-gradient(900px 600px at 15% 15%, rgba(196,18,26,.14), transparent 55%),
+                  radial-gradient(900px 600px at 85% 35%, rgba(233,216,199,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      display:flex;
+      justify-content:center;
+      padding:22px 14px 36px;
+    }
+    .wrap{
+      width:min(560px, 100%);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* Header */
+    .hero{
+      padding:22px 20px 16px;
+      position:relative;
+    }
+    .grain{
+      position:absolute; inset:0;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 3px 3px;
+      opacity:.06;
+      pointer-events:none;
+    }
+    .topRow{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .logo{
+      width:54px; height:54px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(196,18,26,.35), rgba(233,216,199,.18));
+      border:1px solid rgba(255,255,255,.08);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+    .logo span{
+      font-weight:800;
+      letter-spacing:.5px;
+      color:var(--accent2);
+    }
+    h1{
+      margin:0;
+      font-size: 22px;
+      line-height:1.1;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .badges{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .badge{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:7px 10px;
+      border-radius: 999px;
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+    .dot{
+      width:7px; height:7px;
+      border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(196,18,26,.15);
+    }
+
+    /* Links */
+    .links{
+      padding: 0 14px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    a.btn{
+      text-decoration:none;
+      color:var(--text);
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      padding: 14px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+    }
+    a.btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+    }
+    .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .ico{
+      width:38px; height:38px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(196,18,26,.18);
+      border:1px solid rgba(196,18,26,.25);
+      flex:0 0 auto;
+    }
+    .ico.secondary{
+      background: rgba(233,216,199,.10);
+      border:1px solid rgba(233,216,199,.20);
+    }
+    .txt{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+    .txt b{
+      font-size:15px;
+      font-weight:750;
+      letter-spacing:.1px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .txt small{
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .arrow{
+      color: rgba(255,255,255,.55);
+      font-size:18px;
+      flex:0 0 auto;
+    }
+
+    /* Grid quick actions */
+    .grid{
+      padding: 0 14px 16px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .mini{
+      text-decoration:none;
+      color:var(--text);
+      background: rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      padding: 12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .mini strong{font-size:13px}
+    .mini span{color:var(--muted2); font-size:12px}
+    .mini .pill{
+      margin-left:auto;
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    /* Footer */
+    .footer{
+      padding: 14px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color: var(--muted2);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .footer a{color:var(--accent2); text-decoration:none}
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Chez Piñeiro</h1>
-    <p>Un clásico de Pocitos 🇺🇾<br>Pizzería & Chivitería</p>
-    <p>📍 21 de Setiembre y Ellauri</p>
+  <main class="wrap">
+    <section class="card">
+      <header class="hero">
+        <div class="grain"></div>
+        <div class="topRow">
+          <!-- Si luego quieren, aquí puedes poner un logo real (img). Por ahora queda elegante con iniciales -->
+          <div class="logo" aria-label="Chez Piñeiro">
+            <span>CP</span>
+          </div>
+          <div>
+            <h1>Chez Piñeiro</h1>
+            <p class="subtitle">Un clásico de Pocitos 🇺🇾 · Pizzería & Chivitería</p>
+          </div>
+        </div>
 
-    <a class="btn primary" href="https://wa.me/598XXXXXXXX?text=Hola%20Chez%20Piñeiro%2C%20quiero%20hacer%20un%20pedido" target="_blank">
-      📲 Pedir por WhatsApp
-    </a>
+        <div class="badges">
+          <div class="badge"><span class="dot"></span>📍 21 de Setiembre y Ellauri</div>
+          <div class="badge">🛵 Delivery · Take Away · Salón</div>
+        </div>
+      </header>
 
-    <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=21+de+Setiembre+y+Ellauri+Montevideo" target="_blank">
-      📍 Cómo llegar
-    </a>
+      <!-- Botones principales -->
+      <div class="links">
 
-    <a class="btn secondary" href="#" target="_blank">
-      🍽️ Ver menú
-    </a>
+        <!-- WhatsApp -->
+        <a class="btn" href="https://wa.me/598XXXXXXXX?text=Hola%20Chez%20Piñeiro%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="ico" aria-hidden="true">📲</div>
+            <div class="txt">
+              <b>Pedir por WhatsApp</b>
+              <small>Respuesta rápida · Pedidos y reservas</small>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
 
-    <div class="small">Horario y delivery: (colócalo aquí cuando lo tengan)</div>
-  </div>
+        <!-- Ubicación -->
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=21+de+Setiembre+y+Ellauri+Montevideo" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="ico secondary" aria-hidden="true">📍</div>
+            <div class="txt">
+              <b>Cómo llegar</b>
+              <small>Abrir en Google Maps</small>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <!-- Menú -->
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="ico secondary" aria-hidden="true">🍽️</div>
+            <div class="txt">
+              <b>Ver menú</b>
+              <small>Chivitos · Pizzas · Platos · Promos</small>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+      </div>
+
+      <!-- Acciones rápidas (tipo “destacados”) -->
+      <div class="grid">
+        <a class="mini" href="#" target="_blank" rel="noopener">
+          <div>🔥</div>
+          <div>
+            <strong>Promos</strong><br/>
+            <span>Ofertas del día</span>
+          </div>
+          <div class="pill">Ver</div>
+        </a>
+
+        <a class="mini" href="#" target="_blank" rel="noopener">
+          <div>🥩</div>
+          <div>
+            <strong>Chivito de lomo</strong><br/>
+            <span>El favorito</span>
+          </div>
+          <div class="pill">Ver</div>
+        </a>
+
+        <a class="mini" href="#" target="_blank" rel="noopener">
+          <div>🍕</div>
+          <div>
+            <strong>Platos</strong><br/>
+            <span>Clásicos de la casa</span>
+          </div>
+          <div class="pill">Ver</div>
+        </a>
+
+        <a class="mini" href="#" target="_blank" rel="noopener">
+          <div>🫖</div>
+          <div>
+            <strong>Té completo 2</strong><br/>
+            <span>Para compartir</span>
+          </div>
+          <div class="pill">Ver</div>
+        </a>
+      </div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Chez Piñeiro</div>
+        <div>Hecho con amor y hambre 🤝</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
